@@ -68,8 +68,8 @@ void initMicro(void){
 	// zero enabled
 	// one disabled
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 0); 
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 0);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 0);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
 	
 	while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3));
