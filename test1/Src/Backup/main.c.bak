@@ -64,7 +64,21 @@ static void MX_TIM3_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+void initMicro(void){
+	// zero enabled
+	// one disabled
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 0); 
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
 
+	while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3));
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, 1);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 0);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, 1);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, 0);
+	
+}
 /* USER CODE END 0 */
 
 /**
@@ -91,7 +105,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+	
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -100,7 +114,7 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 	HAL_TIM_Base_Start_IT(&htim4);
-
+	initMicro();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -135,9 +149,8 @@ void SystemClock_Config(void)
 
     /**Initializes the CPU, AHB and APB busses clocks 
     */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = 16;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -148,7 +161,7 @@ void SystemClock_Config(void)
     */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSE;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;

@@ -39,10 +39,10 @@
 uint32_t whichDigit = 0;
 uint32_t counter = 0;
 void dec2BCD(int i){
-	int x1 = i & 1;
-	int x2 = (i & 2) >> 1;
-	int x3 = (i & 4) >> 2;
-	int x4 = (i & 8) >> 3;
+	uint32_t x1 = i & 1;
+	uint32_t x2 = (i & 2) >> 1;
+	uint32_t x3 = (i & 4) >> 2;
+	uint32_t x4 = (i & 8) >> 3;
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, x4);
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, x3);
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, x2);
@@ -51,40 +51,40 @@ void dec2BCD(int i){
 }
 
 void digit_interupt(void){
-	switch(whichDigit){
-		case 0:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
-			while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3));
-			dec2BCD( (counter & 0x000F) >> 0 );
-		break;
-		case 1:
+	
+			uint32_t tmp = counter;
+			
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 0);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
-			while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2));
-			dec2BCD( (counter & 0x00F0) >> 4 );
-		break;
-		case 2:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
+		
+			dec2BCD( tmp % 10 );
+			tmp /= 10;
+			HAL_Delay(3);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 0);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
-			while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1));
-			dec2BCD( (counter & 0x0F00) >> 8 );
-		break;
-		case 3:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
+			
+			dec2BCD( tmp % 10 );
+	tmp /= 10;
+			HAL_Delay(3);
+	
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 0);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
-			while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0));
-			dec2BCD( (counter & 0xF000) >> 12 );
-		break;
-	}
+			dec2BCD( tmp % 10 );
+			tmp /= 10;
+			HAL_Delay(3);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
+
+			dec2BCD( tmp % 10 );
+			HAL_Delay(3);
 }
 
 
@@ -277,7 +277,8 @@ void TIM3_IRQHandler(void)
   HAL_TIM_IRQHandler(&htim3);
   /* USER CODE BEGIN TIM3_IRQn 1 */
 	digit_interupt();
-	whichDigit = (whichDigit + 1) % 4;
+	//whichDigit = (whichDigit + 1) % 4;
+	whichDigit = 0;
   /* USER CODE END TIM3_IRQn 1 */
 }
 

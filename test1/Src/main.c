@@ -71,12 +71,11 @@ void initMicro(void){
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
-	
-	while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3));
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, 1);
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 0);
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, 1);
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, 0);
+	
 	
 }
 /* USER CODE END 0 */
@@ -191,9 +190,9 @@ static void MX_TIM3_Init(void)
   TIM_MasterConfigTypeDef sMasterConfig;
 
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 49;
+  htim3.Init.Prescaler = 129;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 4800;
+  htim3.Init.Period = 2500;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
   {
@@ -223,9 +222,9 @@ static void MX_TIM4_Init(void)
   TIM_MasterConfigTypeDef sMasterConfig;
 
   htim4.Instance = TIM4;
-  htim4.Init.Prescaler = 3999;
+  htim4.Init.Prescaler = 4999;
   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 4800;
+  htim4.Init.Period = 2500;
   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
   {

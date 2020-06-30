@@ -3,7 +3,7 @@
 <title>Static Call Graph - [test1\test1.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image test1\test1.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Jun 30 17:44:18 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Jun 30 18:41:22 2020
 <BR><P>
 <H3>Maximum Stack Usage =        168 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -360,7 +360,6 @@ Global Symbols
 
 <P><STRONG><a name="[4c]"></a>HAL_GPIO_ReadPin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_hal_gpio.o(i.HAL_GPIO_ReadPin))
 <BR><BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI0_IRQHandler
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initMicro
 </UL>
 
 <P><STRONG><a name="[78]"></a>HAL_GPIO_TogglePin</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_hal_gpio.o(i.HAL_GPIO_TogglePin))
@@ -623,7 +622,7 @@ Global Symbols
 <P><STRONG><a name="[43]"></a>SystemInit</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, system_stm32f4xx.o(i.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f401xc.o(.text)
 </UL>
-<P><STRONG><a name="[23]"></a>TIM3_IRQHandler</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, stm32f4xx_it.o(i.TIM3_IRQHandler))
+<P><STRONG><a name="[23]"></a>TIM3_IRQHandler</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, stm32f4xx_it.o(i.TIM3_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = TIM3_IRQHandler &rArr; digit_interupt &rArr; dec2BCD
 </UL>
 <BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;digit_interupt
@@ -631,10 +630,11 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f401xc.o(RESET)
 </UL>
-<P><STRONG><a name="[24]"></a>TIM4_IRQHandler</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, stm32f4xx_it.o(i.TIM4_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = TIM4_IRQHandler &rArr; HAL_TIM_IRQHandler
+<P><STRONG><a name="[24]"></a>TIM4_IRQHandler</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, stm32f4xx_it.o(i.TIM4_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = TIM4_IRQHandler &rArr; digit_interupt &rArr; dec2BCD
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;digit_interupt
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f401xc.o(RESET)
@@ -658,7 +658,7 @@ Global Symbols
 
 <P><STRONG><a name="[87]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[79]"></a>dec2BCD</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, stm32f4xx_it.o(i.dec2BCD))
+<P><STRONG><a name="[79]"></a>dec2BCD</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, stm32f4xx_it.o(i.dec2BCD))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = dec2BCD
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -673,14 +673,14 @@ Global Symbols
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dec2BCD
 </UL>
-<BR>[Called By]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
+<BR>[Called By]<UL><LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_IRQHandler
+<LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[7a]"></a>initMicro</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, main.o(i.initMicro))
+<P><STRONG><a name="[7a]"></a>initMicro</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, main.o(i.initMicro))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = initMicro
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
-<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
 </UL>
 <BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
