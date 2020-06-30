@@ -64,7 +64,21 @@ static void MX_TIM3_Init(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
+void initMicro(void){
+	// zero enabled
+	// one disabled
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 0); 
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 0);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 0);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
+	
+	while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3));
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, 1);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 0);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, 1);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, 0);
+	
+}
 /* USER CODE END 0 */
 
 /**
@@ -91,7 +105,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+	
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -100,7 +114,7 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 	HAL_TIM_Base_Start_IT(&htim4);
-
+	initMicro();
   /* USER CODE END 2 */
 
   /* Infinite loop */

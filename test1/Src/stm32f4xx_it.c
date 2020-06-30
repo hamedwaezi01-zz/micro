@@ -53,34 +53,34 @@ void dec2BCD(int i){
 void digit_interupt(void){
 	switch(whichDigit){
 		case 0:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
 			while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3));
 			dec2BCD( (counter & 0x000F) >> 0 );
 		break;
 		case 1:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
 			while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2));
 			dec2BCD( (counter & 0x00F0) >> 4 );
 		break;
 		case 2:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
 			while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1));
 			dec2BCD( (counter & 0x0F00) >> 8 );
 		break;
 		case 3:
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
 			while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0));
 			dec2BCD( (counter & 0xF000) >> 12 );
 		break;
@@ -277,7 +277,8 @@ void TIM3_IRQHandler(void)
   HAL_TIM_IRQHandler(&htim3);
   /* USER CODE BEGIN TIM3_IRQn 1 */
 	digit_interupt();
-	whichDigit = (whichDigit + 1) % 4;
+	//whichDigit = (whichDigit + 1) % 4;
+	whichDigit = 0;
   /* USER CODE END TIM3_IRQn 1 */
 }
 
