@@ -71,6 +71,7 @@ void initMicro(void){
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
+	
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, 1);
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 0);
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, 1);

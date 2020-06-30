@@ -38,7 +38,7 @@
 /* USER CODE BEGIN 0 */
 
 uint32_t counter = 0;
-void dec2BCD(int i){
+void dec2BCD(uint32_t i){
 	uint32_t x1 = i & 1;
 	uint32_t x2 = (i & 2);
 	uint32_t x3 = (i & 4);
@@ -59,20 +59,11 @@ void digit_interupt(void){
 	
 			uint32_t tmp = counter;
 			
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
 		
-			dec2BCD( tmp % 10 );
-			tmp /= 10;
-			HAL_Delay(3);
-	
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
-			
 			dec2BCD( tmp % 10 );
 			tmp /= 10;
 			HAL_Delay(3);
@@ -85,11 +76,20 @@ void digit_interupt(void){
 			dec2BCD( tmp % 10 );
 			tmp /= 10;
 			HAL_Delay(3);
-			
+	
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
+			
+			dec2BCD( tmp % 10 );
+			tmp /= 10;
+			HAL_Delay(3);
+			
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 0);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
 
 			dec2BCD( tmp % 10 );
 			HAL_Delay(3);
@@ -284,6 +284,7 @@ void TIM3_IRQHandler(void)
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);
   /* USER CODE BEGIN TIM3_IRQn 1 */
+	
 	counter = (counter + 1) % 2000;
 	digit_interupt();
 	
@@ -300,9 +301,9 @@ void TIM4_IRQHandler(void)
   /* USER CODE END TIM4_IRQn 0 */
   HAL_TIM_IRQHandler(&htim4);
   /* USER CODE BEGIN TIM4_IRQn 1 */
-	counter = (counter + 1) % 2000;
-	digit_interupt(); // mige faghat yeki az ina kar mikoneh
-	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_1);
+	//counter = (counter + 1) % 2000;
+	//digit_interupt(); // mige faghat yeki az ina kar mikoneh
+	//HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_1);
   /* USER CODE END TIM4_IRQn 1 */ 
 }
 
