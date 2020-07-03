@@ -18,6 +18,7 @@
 "test1\main.o"
 "test1\stm32f4xx_it.o"
 "test1\stm32f4xx_hal_msp.o"
+"test1\liquidcrystal.o"
 --library_type=microlib --strict --scatter "test1\test1.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

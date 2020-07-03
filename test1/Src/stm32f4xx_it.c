@@ -36,13 +36,25 @@
 #include "stm32f4xx_it.h"
 
 /* USER CODE BEGIN 0 */
+#include "LiquidCrystal.h"
+#define RED 2
+#define YELLOW 1
+#define GREEN 0
+#define MAXTIME 20
+#define MIDTIME 5
 
-uint32_t counter = 0;
+// test1\MDK-ARM\test1\test1.hex
+uint32_t counter1 = MAXTIME;
+
+// 0: green, 1: yellow, 2: red
+char light1 = 0, light2 = 2, running = 0;
 void dec2BCD(uint32_t i){
-	uint32_t x1 = i & 1;
-	uint32_t x2 = (i & 2);
-	uint32_t x3 = (i & 4);
-	uint32_t x4 = (i & 8);
+	uint32_t x1 = i  & 1;
+	uint32_t x2 = i  & 2;
+	uint32_t x3 = i  & 4;
+	uint32_t x4 = i  & 8;
+	
+	
 	if (x1 > 0) x1 = 1;
 	if (x2 > 0) x2 = 1;
 	if (x3 > 0) x3 = 1;
@@ -57,42 +69,34 @@ void dec2BCD(uint32_t i){
 
 void digit_interupt(void){
 	
-			uint32_t tmp = counter;
-			
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 0);
-		
-			dec2BCD( tmp % 10 );
-			tmp /= 10;
-			HAL_Delay(3);
-	
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
-			
-			dec2BCD( tmp % 10 );
-			tmp /= 10;
-			HAL_Delay(3);
-	
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
-			
-			dec2BCD( tmp % 10 );
-			tmp /= 10;
-			HAL_Delay(3);
-			
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, 0);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, 1);
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, 1);
+	uint32_t delay = 3;
+	uint32_t tmp1 = counter1;
+	uint32_t tmp2 = counter1;
+	if (light1 == GREEN) tmp1 = counter1 - MIDTIME;
+	else if (light2 == GREEN) tmp2 = counter1 - MIDTIME;
 
-			dec2BCD( tmp % 10 );
-			HAL_Delay(3);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1 | GPIO_PIN_0 , 0);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1 , 1);
+	dec2BCD( tmp1 % 10);
+	tmp1 /= 10;
+	HAL_Delay(delay);
+
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1 | GPIO_PIN_0 , 0);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_0 , 1);
+	dec2BCD( tmp1 % 10);
+	HAL_Delay(delay);
+
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1 | GPIO_PIN_0 , 0);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3 | GPIO_PIN_1 | GPIO_PIN_0 , 1);		
+	dec2BCD( tmp2 % 10);
+	tmp2 /= 10;
+	HAL_Delay(delay);
+
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1 | GPIO_PIN_0 , 0);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_0 , 1);
+
+	dec2BCD( tmp2 % 10);
+
 }
 
 
@@ -262,16 +266,53 @@ void EXTI0_IRQHandler(void)
   /* USER CODE END EXTI0_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
   /* USER CODE BEGIN EXTI0_IRQn 1 */
-	if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1))
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1,0);
-	else{
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1,1);
-		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0)){
-			if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0))
-				HAL_GPIO_WritePin(GPIOC,GPIO_PIN_1, 0);
-		}
+	if (!running) {
+		running = 1;
+		HAL_TIM_Base_Start_IT(&htim3);
+		HAL_TIM_Base_Start_IT(&htim4);
 	}
+////	if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1))
+////		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1,0);
+////	else{
+////		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1,1);
+////		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0)){
+////			if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0))
+////				HAL_GPIO_WritePin(GPIOC,GPIO_PIN_1, 0);
+////		}
+////	}
   /* USER CODE END EXTI0_IRQn 1 */
+}
+
+/**
+* @brief This function handles EXTI line4 interrupt.
+*/
+void EXTI4_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI4_IRQn 0 */
+
+  /* USER CODE END EXTI4_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
+  /* USER CODE BEGIN EXTI4_IRQn 1 */
+
+  /* USER CODE END EXTI4_IRQn 1 */
+}
+
+/**
+* @brief This function handles EXTI line[9:5] interrupts.
+*/
+void EXTI9_5_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI9_5_IRQn 0 */
+
+  /* USER CODE END EXTI9_5_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_7);
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_8);
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_9);
+  /* USER CODE BEGIN EXTI9_5_IRQn 1 */
+
+  /* USER CODE END EXTI9_5_IRQn 1 */
 }
 
 /**
@@ -284,8 +325,8 @@ void TIM3_IRQHandler(void)
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);
   /* USER CODE BEGIN TIM3_IRQn 1 */
-	
-	counter = (counter + 1) % 2000;
+	//counter = (counter + 1) % 2000;
+	// counter = (counter + 1) % 2000;
 	digit_interupt();
 	
   /* USER CODE END TIM3_IRQn 1 */
@@ -301,10 +342,37 @@ void TIM4_IRQHandler(void)
   /* USER CODE END TIM4_IRQn 0 */
   HAL_TIM_IRQHandler(&htim4);
   /* USER CODE BEGIN TIM4_IRQn 1 */
-	//counter = (counter + 1) % 2000;
-	//digit_interupt(); // mige faghat yeki az ina kar mikoneh
-	//HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_1);
-  /* USER CODE END TIM4_IRQn 1 */ 
+	//counter1 = (counter1 + 1) % MAXTIME;
+	char stateChanged = 1;
+	counter1--;
+	if (counter1 == 0) counter1 = MAXTIME;
+	
+	if(counter1 == MIDTIME){
+		if (light1 == GREEN) light1 = YELLOW;
+		else if (light2 == GREEN) light2 = YELLOW;
+	} else if (counter1 == MAXTIME){
+		light1 = (light1 + 1) % 3;
+		light2 = (light2 + 1) % 3;
+	} else stateChanged = 0;
+	if (stateChanged == 1){
+		setCursor(23,0);
+		switch(light1){
+			case GREEN:	 print("GREEN ");	 break;
+			case YELLOW: print("YELLOW");	 break;
+			case RED:		 print("RED   ");	 break;
+		}
+		
+		setCursor(25,1);
+		switch(light2){
+			case GREEN: 	print("GREEN ");	 break;
+			case YELLOW:	print("YELLOW");	 break;
+			case RED:			print("RED   ");	 break;
+		}
+	}
+	
+	//digit_interupt();
+	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_1);
+  /* USER CODE END TIM4_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
