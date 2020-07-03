@@ -867,53 +867,53 @@ Image Symbol Table
     i.HardFault_Handler                      0x08000eb6   Section        0  stm32f4xx_it.o(i.HardFault_Handler)
     i.LiquidCrystal                          0x08000eb8   Section        0  liquidcrystal.o(i.LiquidCrystal)
     i.MX_GPIO_Init                           0x08000f00   Section        0  main.o(i.MX_GPIO_Init)
-    MX_GPIO_Init                             0x08000f01   Thumb Code   414  main.o(i.MX_GPIO_Init)
-    i.MX_TIM3_Init                           0x080010bc   Section        0  main.o(i.MX_TIM3_Init)
-    MX_TIM3_Init                             0x080010bd   Thumb Code    76  main.o(i.MX_TIM3_Init)
-    i.MX_TIM4_Init                           0x08001110   Section        0  main.o(i.MX_TIM4_Init)
-    MX_TIM4_Init                             0x08001111   Thumb Code    76  main.o(i.MX_TIM4_Init)
-    i.MemManage_Handler                      0x08001164   Section        0  stm32f4xx_it.o(i.MemManage_Handler)
-    i.NMI_Handler                            0x08001166   Section        0  stm32f4xx_it.o(i.NMI_Handler)
-    i.NVIC_SetPriority                       0x08001168   Section        0  stm32f4xx_hal_cortex.o(i.NVIC_SetPriority)
-    NVIC_SetPriority                         0x08001169   Thumb Code    32  stm32f4xx_hal_cortex.o(i.NVIC_SetPriority)
-    i.PendSV_Handler                         0x08001188   Section        0  stm32f4xx_it.o(i.PendSV_Handler)
-    i.SVC_Handler                            0x0800118a   Section        0  stm32f4xx_it.o(i.SVC_Handler)
-    i.SysTick_Handler                        0x0800118c   Section        0  stm32f4xx_it.o(i.SysTick_Handler)
-    i.SystemClock_Config                     0x0800119c   Section        0  main.o(i.SystemClock_Config)
-    i.SystemInit                             0x08001228   Section        0  system_stm32f4xx.o(i.SystemInit)
-    i.TIM3_IRQHandler                        0x0800127c   Section        0  stm32f4xx_it.o(i.TIM3_IRQHandler)
-    i.TIM4_IRQHandler                        0x08001290   Section        0  stm32f4xx_it.o(i.TIM4_IRQHandler)
-    i.TIM_Base_SetConfig                     0x08001358   Section        0  stm32f4xx_hal_tim.o(i.TIM_Base_SetConfig)
-    i.TIM_ETR_SetConfig                      0x080013e8   Section        0  stm32f4xx_hal_tim.o(i.TIM_ETR_SetConfig)
-    TIM_ETR_SetConfig                        0x080013e9   Thumb Code    20  stm32f4xx_hal_tim.o(i.TIM_ETR_SetConfig)
-    i.TIM_ITRx_SetConfig                     0x080013fc   Section        0  stm32f4xx_hal_tim.o(i.TIM_ITRx_SetConfig)
-    TIM_ITRx_SetConfig                       0x080013fd   Thumb Code    16  stm32f4xx_hal_tim.o(i.TIM_ITRx_SetConfig)
-    i.TIM_TI1_ConfigInputStage               0x0800140c   Section        0  stm32f4xx_hal_tim.o(i.TIM_TI1_ConfigInputStage)
-    TIM_TI1_ConfigInputStage                 0x0800140d   Thumb Code    34  stm32f4xx_hal_tim.o(i.TIM_TI1_ConfigInputStage)
-    i.TIM_TI2_ConfigInputStage               0x0800142e   Section        0  stm32f4xx_hal_tim.o(i.TIM_TI2_ConfigInputStage)
-    TIM_TI2_ConfigInputStage                 0x0800142f   Thumb Code    36  stm32f4xx_hal_tim.o(i.TIM_TI2_ConfigInputStage)
-    i.UsageFault_Handler                     0x08001452   Section        0  stm32f4xx_it.o(i.UsageFault_Handler)
-    i.__scatterload_copy                     0x08001454   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x08001462   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08001464   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.begin                                  0x08001474   Section        0  liquidcrystal.o(i.begin)
-    i.clear                                  0x080015ac   Section        0  liquidcrystal.o(i.clear)
-    i.command                                0x080015be   Section        0  liquidcrystal.o(i.command)
-    i.dec2BCD                                0x080015c4   Section        0  stm32f4xx_it.o(i.dec2BCD)
-    i.digit_interupt                         0x08001618   Section        0  stm32f4xx_it.o(i.digit_interupt)
-    i.display                                0x080016e0   Section        0  liquidcrystal.o(i.display)
-    i.enableClock                            0x080016f8   Section        0  liquidcrystal.o(i.enableClock)
-    i.init                                   0x0800178c   Section        0  liquidcrystal.o(i.init)
-    i.initMicro                              0x080017dc   Section        0  main.o(i.initMicro)
-    i.main                                   0x08001834   Section        0  main.o(i.main)
-    i.print                                  0x08001870   Section        0  liquidcrystal.o(i.print)
-    i.pulseEnable                            0x08001898   Section        0  liquidcrystal.o(i.pulseEnable)
-    i.send                                   0x080018d4   Section        0  liquidcrystal.o(i.send)
-    i.setCursor                              0x08001918   Section        0  liquidcrystal.o(i.setCursor)
-    i.setRowOffsets                          0x08001940   Section        0  liquidcrystal.o(i.setRowOffsets)
-    i.write4bits                             0x08001954   Section        0  liquidcrystal.o(i.write4bits)
-    i.write8bits                             0x08001988   Section        0  liquidcrystal.o(i.write8bits)
-    .constdata                               0x080019bc   Section       16  system_stm32f4xx.o(.constdata)
+    MX_GPIO_Init                             0x08000f01   Thumb Code   418  main.o(i.MX_GPIO_Init)
+    i.MX_TIM3_Init                           0x080010c0   Section        0  main.o(i.MX_TIM3_Init)
+    MX_TIM3_Init                             0x080010c1   Thumb Code    76  main.o(i.MX_TIM3_Init)
+    i.MX_TIM4_Init                           0x08001114   Section        0  main.o(i.MX_TIM4_Init)
+    MX_TIM4_Init                             0x08001115   Thumb Code    76  main.o(i.MX_TIM4_Init)
+    i.MemManage_Handler                      0x08001168   Section        0  stm32f4xx_it.o(i.MemManage_Handler)
+    i.NMI_Handler                            0x0800116a   Section        0  stm32f4xx_it.o(i.NMI_Handler)
+    i.NVIC_SetPriority                       0x0800116c   Section        0  stm32f4xx_hal_cortex.o(i.NVIC_SetPriority)
+    NVIC_SetPriority                         0x0800116d   Thumb Code    32  stm32f4xx_hal_cortex.o(i.NVIC_SetPriority)
+    i.PendSV_Handler                         0x0800118c   Section        0  stm32f4xx_it.o(i.PendSV_Handler)
+    i.SVC_Handler                            0x0800118e   Section        0  stm32f4xx_it.o(i.SVC_Handler)
+    i.SysTick_Handler                        0x08001190   Section        0  stm32f4xx_it.o(i.SysTick_Handler)
+    i.SystemClock_Config                     0x080011a0   Section        0  main.o(i.SystemClock_Config)
+    i.SystemInit                             0x0800122c   Section        0  system_stm32f4xx.o(i.SystemInit)
+    i.TIM3_IRQHandler                        0x08001280   Section        0  stm32f4xx_it.o(i.TIM3_IRQHandler)
+    i.TIM4_IRQHandler                        0x08001294   Section        0  stm32f4xx_it.o(i.TIM4_IRQHandler)
+    i.TIM_Base_SetConfig                     0x0800135c   Section        0  stm32f4xx_hal_tim.o(i.TIM_Base_SetConfig)
+    i.TIM_ETR_SetConfig                      0x080013ec   Section        0  stm32f4xx_hal_tim.o(i.TIM_ETR_SetConfig)
+    TIM_ETR_SetConfig                        0x080013ed   Thumb Code    20  stm32f4xx_hal_tim.o(i.TIM_ETR_SetConfig)
+    i.TIM_ITRx_SetConfig                     0x08001400   Section        0  stm32f4xx_hal_tim.o(i.TIM_ITRx_SetConfig)
+    TIM_ITRx_SetConfig                       0x08001401   Thumb Code    16  stm32f4xx_hal_tim.o(i.TIM_ITRx_SetConfig)
+    i.TIM_TI1_ConfigInputStage               0x08001410   Section        0  stm32f4xx_hal_tim.o(i.TIM_TI1_ConfigInputStage)
+    TIM_TI1_ConfigInputStage                 0x08001411   Thumb Code    34  stm32f4xx_hal_tim.o(i.TIM_TI1_ConfigInputStage)
+    i.TIM_TI2_ConfigInputStage               0x08001432   Section        0  stm32f4xx_hal_tim.o(i.TIM_TI2_ConfigInputStage)
+    TIM_TI2_ConfigInputStage                 0x08001433   Thumb Code    36  stm32f4xx_hal_tim.o(i.TIM_TI2_ConfigInputStage)
+    i.UsageFault_Handler                     0x08001456   Section        0  stm32f4xx_it.o(i.UsageFault_Handler)
+    i.__scatterload_copy                     0x08001458   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08001466   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08001468   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.begin                                  0x08001478   Section        0  liquidcrystal.o(i.begin)
+    i.clear                                  0x080015b0   Section        0  liquidcrystal.o(i.clear)
+    i.command                                0x080015c2   Section        0  liquidcrystal.o(i.command)
+    i.dec2BCD                                0x080015c8   Section        0  stm32f4xx_it.o(i.dec2BCD)
+    i.digit_interupt                         0x0800161c   Section        0  stm32f4xx_it.o(i.digit_interupt)
+    i.display                                0x080016e4   Section        0  liquidcrystal.o(i.display)
+    i.enableClock                            0x080016fc   Section        0  liquidcrystal.o(i.enableClock)
+    i.init                                   0x08001790   Section        0  liquidcrystal.o(i.init)
+    i.initMicro                              0x080017e0   Section        0  main.o(i.initMicro)
+    i.main                                   0x08001838   Section        0  main.o(i.main)
+    i.print                                  0x08001874   Section        0  liquidcrystal.o(i.print)
+    i.pulseEnable                            0x0800189c   Section        0  liquidcrystal.o(i.pulseEnable)
+    i.send                                   0x080018d8   Section        0  liquidcrystal.o(i.send)
+    i.setCursor                              0x0800191c   Section        0  liquidcrystal.o(i.setCursor)
+    i.setRowOffsets                          0x08001944   Section        0  liquidcrystal.o(i.setRowOffsets)
+    i.write4bits                             0x08001958   Section        0  liquidcrystal.o(i.write4bits)
+    i.write8bits                             0x0800198c   Section        0  liquidcrystal.o(i.write8bits)
+    .constdata                               0x080019c0   Section       16  system_stm32f4xx.o(.constdata)
     .data                                    0x20000000   Section       12  stm32f4xx_hal.o(.data)
     .data                                    0x2000000c   Section        4  system_stm32f4xx.o(.data)
     .data                                    0x20000010   Section        8  stm32f4xx_it.o(.data)
@@ -1047,40 +1047,40 @@ Image Symbol Table
     HAL_TIM_TriggerCallback                  0x08000eb5   Thumb Code     2  stm32f4xx_hal_tim.o(i.HAL_TIM_TriggerCallback)
     HardFault_Handler                        0x08000eb7   Thumb Code     2  stm32f4xx_it.o(i.HardFault_Handler)
     LiquidCrystal                            0x08000eb9   Thumb Code    66  liquidcrystal.o(i.LiquidCrystal)
-    MemManage_Handler                        0x08001165   Thumb Code     2  stm32f4xx_it.o(i.MemManage_Handler)
-    NMI_Handler                              0x08001167   Thumb Code     2  stm32f4xx_it.o(i.NMI_Handler)
-    PendSV_Handler                           0x08001189   Thumb Code     2  stm32f4xx_it.o(i.PendSV_Handler)
-    SVC_Handler                              0x0800118b   Thumb Code     2  stm32f4xx_it.o(i.SVC_Handler)
-    SysTick_Handler                          0x0800118d   Thumb Code    14  stm32f4xx_it.o(i.SysTick_Handler)
-    SystemClock_Config                       0x0800119d   Thumb Code   130  main.o(i.SystemClock_Config)
-    SystemInit                               0x08001229   Thumb Code    66  system_stm32f4xx.o(i.SystemInit)
-    TIM3_IRQHandler                          0x0800127d   Thumb Code    16  stm32f4xx_it.o(i.TIM3_IRQHandler)
-    TIM4_IRQHandler                          0x08001291   Thumb Code   164  stm32f4xx_it.o(i.TIM4_IRQHandler)
-    TIM_Base_SetConfig                       0x08001359   Thumb Code   114  stm32f4xx_hal_tim.o(i.TIM_Base_SetConfig)
-    UsageFault_Handler                       0x08001453   Thumb Code     2  stm32f4xx_it.o(i.UsageFault_Handler)
-    __scatterload_copy                       0x08001455   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x08001463   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08001465   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    begin                                    0x08001475   Thumb Code   302  liquidcrystal.o(i.begin)
-    clear                                    0x080015ad   Thumb Code    18  liquidcrystal.o(i.clear)
-    command                                  0x080015bf   Thumb Code     6  liquidcrystal.o(i.command)
-    dec2BCD                                  0x080015c5   Thumb Code    80  stm32f4xx_it.o(i.dec2BCD)
-    digit_interupt                           0x08001619   Thumb Code   192  stm32f4xx_it.o(i.digit_interupt)
-    display                                  0x080016e1   Thumb Code    18  liquidcrystal.o(i.display)
-    enableClock                              0x080016f9   Thumb Code   120  liquidcrystal.o(i.enableClock)
-    init                                     0x0800178d   Thumb Code    72  liquidcrystal.o(i.init)
-    initMicro                                0x080017dd   Thumb Code    34  main.o(i.initMicro)
-    main                                     0x08001835   Thumb Code    54  main.o(i.main)
-    print                                    0x08001871   Thumb Code    40  liquidcrystal.o(i.print)
-    pulseEnable                              0x08001899   Thumb Code    56  liquidcrystal.o(i.pulseEnable)
-    send                                     0x080018d5   Thumb Code    62  liquidcrystal.o(i.send)
-    setCursor                                0x08001919   Thumb Code    36  liquidcrystal.o(i.setCursor)
-    setRowOffsets                            0x08001941   Thumb Code    14  liquidcrystal.o(i.setRowOffsets)
-    write4bits                               0x08001955   Thumb Code    44  liquidcrystal.o(i.write4bits)
-    write8bits                               0x08001989   Thumb Code    44  liquidcrystal.o(i.write8bits)
-    AHBPrescTable                            0x080019bc   Data          16  system_stm32f4xx.o(.constdata)
-    Region$$Table$$Base                      0x080019cc   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x080019ec   Number         0  anon$$obj.o(Region$$Table)
+    MemManage_Handler                        0x08001169   Thumb Code     2  stm32f4xx_it.o(i.MemManage_Handler)
+    NMI_Handler                              0x0800116b   Thumb Code     2  stm32f4xx_it.o(i.NMI_Handler)
+    PendSV_Handler                           0x0800118d   Thumb Code     2  stm32f4xx_it.o(i.PendSV_Handler)
+    SVC_Handler                              0x0800118f   Thumb Code     2  stm32f4xx_it.o(i.SVC_Handler)
+    SysTick_Handler                          0x08001191   Thumb Code    14  stm32f4xx_it.o(i.SysTick_Handler)
+    SystemClock_Config                       0x080011a1   Thumb Code   130  main.o(i.SystemClock_Config)
+    SystemInit                               0x0800122d   Thumb Code    66  system_stm32f4xx.o(i.SystemInit)
+    TIM3_IRQHandler                          0x08001281   Thumb Code    16  stm32f4xx_it.o(i.TIM3_IRQHandler)
+    TIM4_IRQHandler                          0x08001295   Thumb Code   164  stm32f4xx_it.o(i.TIM4_IRQHandler)
+    TIM_Base_SetConfig                       0x0800135d   Thumb Code   114  stm32f4xx_hal_tim.o(i.TIM_Base_SetConfig)
+    UsageFault_Handler                       0x08001457   Thumb Code     2  stm32f4xx_it.o(i.UsageFault_Handler)
+    __scatterload_copy                       0x08001459   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08001467   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08001469   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    begin                                    0x08001479   Thumb Code   302  liquidcrystal.o(i.begin)
+    clear                                    0x080015b1   Thumb Code    18  liquidcrystal.o(i.clear)
+    command                                  0x080015c3   Thumb Code     6  liquidcrystal.o(i.command)
+    dec2BCD                                  0x080015c9   Thumb Code    80  stm32f4xx_it.o(i.dec2BCD)
+    digit_interupt                           0x0800161d   Thumb Code   192  stm32f4xx_it.o(i.digit_interupt)
+    display                                  0x080016e5   Thumb Code    18  liquidcrystal.o(i.display)
+    enableClock                              0x080016fd   Thumb Code   120  liquidcrystal.o(i.enableClock)
+    init                                     0x08001791   Thumb Code    72  liquidcrystal.o(i.init)
+    initMicro                                0x080017e1   Thumb Code    34  main.o(i.initMicro)
+    main                                     0x08001839   Thumb Code    54  main.o(i.main)
+    print                                    0x08001875   Thumb Code    40  liquidcrystal.o(i.print)
+    pulseEnable                              0x0800189d   Thumb Code    56  liquidcrystal.o(i.pulseEnable)
+    send                                     0x080018d9   Thumb Code    62  liquidcrystal.o(i.send)
+    setCursor                                0x0800191d   Thumb Code    36  liquidcrystal.o(i.setCursor)
+    setRowOffsets                            0x08001945   Thumb Code    14  liquidcrystal.o(i.setRowOffsets)
+    write4bits                               0x08001959   Thumb Code    44  liquidcrystal.o(i.write4bits)
+    write8bits                               0x0800198d   Thumb Code    44  liquidcrystal.o(i.write8bits)
+    AHBPrescTable                            0x080019c0   Data          16  system_stm32f4xx.o(.constdata)
+    Region$$Table$$Base                      0x080019d0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080019f0   Number         0  anon$$obj.o(Region$$Table)
     uwTickFreq                               0x20000000   Data           1  stm32f4xx_hal.o(.data)
     uwTickPrio                               0x20000004   Data           4  stm32f4xx_hal.o(.data)
     uwTick                                   0x20000008   Data           4  stm32f4xx_hal.o(.data)
@@ -1113,9 +1113,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000195
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001a18, Max: 0x00040000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001a1c, Max: 0x00040000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000019ec, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000019f0, Max: 0x00040000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1182,62 +1182,62 @@ Memory Map of the image
     0x08000eb4   0x08000eb4   0x00000002   Code   RO         1389    i.HAL_TIM_TriggerCallback  stm32f4xx_hal_tim.o
     0x08000eb6   0x08000eb6   0x00000002   Code   RO         2173    i.HardFault_Handler  stm32f4xx_it.o
     0x08000eb8   0x08000eb8   0x00000048   Code   RO         2325    i.LiquidCrystal     liquidcrystal.o
-    0x08000f00   0x08000f00   0x000001bc   Code   RO         2105    i.MX_GPIO_Init      main.o
-    0x080010bc   0x080010bc   0x00000054   Code   RO         2106    i.MX_TIM3_Init      main.o
-    0x08001110   0x08001110   0x00000054   Code   RO         2107    i.MX_TIM4_Init      main.o
-    0x08001164   0x08001164   0x00000002   Code   RO         2174    i.MemManage_Handler  stm32f4xx_it.o
-    0x08001166   0x08001166   0x00000002   Code   RO         2175    i.NMI_Handler       stm32f4xx_it.o
-    0x08001168   0x08001168   0x00000020   Code   RO          326    i.NVIC_SetPriority  stm32f4xx_hal_cortex.o
-    0x08001188   0x08001188   0x00000002   Code   RO         2176    i.PendSV_Handler    stm32f4xx_it.o
-    0x0800118a   0x0800118a   0x00000002   Code   RO         2177    i.SVC_Handler       stm32f4xx_it.o
-    0x0800118c   0x0800118c   0x0000000e   Code   RO         2178    i.SysTick_Handler   stm32f4xx_it.o
-    0x0800119a   0x0800119a   0x00000002   PAD
-    0x0800119c   0x0800119c   0x0000008c   Code   RO         2108    i.SystemClock_Config  main.o
-    0x08001228   0x08001228   0x00000054   Code   RO         2068    i.SystemInit        system_stm32f4xx.o
-    0x0800127c   0x0800127c   0x00000014   Code   RO         2179    i.TIM3_IRQHandler   stm32f4xx_it.o
-    0x08001290   0x08001290   0x000000c8   Code   RO         2180    i.TIM4_IRQHandler   stm32f4xx_it.o
-    0x08001358   0x08001358   0x00000090   Code   RO         1390    i.TIM_Base_SetConfig  stm32f4xx_hal_tim.o
-    0x080013e8   0x080013e8   0x00000014   Code   RO         1397    i.TIM_ETR_SetConfig  stm32f4xx_hal_tim.o
-    0x080013fc   0x080013fc   0x00000010   Code   RO         1398    i.TIM_ITRx_SetConfig  stm32f4xx_hal_tim.o
-    0x0800140c   0x0800140c   0x00000022   Code   RO         1404    i.TIM_TI1_ConfigInputStage  stm32f4xx_hal_tim.o
-    0x0800142e   0x0800142e   0x00000024   Code   RO         1406    i.TIM_TI2_ConfigInputStage  stm32f4xx_hal_tim.o
-    0x08001452   0x08001452   0x00000002   Code   RO         2181    i.UsageFault_Handler  stm32f4xx_it.o
-    0x08001454   0x08001454   0x0000000e   Code   RO         2545    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x08001462   0x08001462   0x00000002   Code   RO         2546    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08001464   0x08001464   0x0000000e   Code   RO         2547    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x08001472   0x08001472   0x00000002   PAD
-    0x08001474   0x08001474   0x00000138   Code   RO         2327    i.begin             liquidcrystal.o
-    0x080015ac   0x080015ac   0x00000012   Code   RO         2329    i.clear             liquidcrystal.o
-    0x080015be   0x080015be   0x00000006   Code   RO         2493    i.command           liquidcrystal.o
-    0x080015c4   0x080015c4   0x00000054   Code   RO         2182    i.dec2BCD           stm32f4xx_it.o
-    0x08001618   0x08001618   0x000000c8   Code   RO         2183    i.digit_interupt    stm32f4xx_it.o
-    0x080016e0   0x080016e0   0x00000018   Code   RO         2332    i.display           liquidcrystal.o
-    0x080016f8   0x080016f8   0x00000094   Code   RO         2333    i.enableClock       liquidcrystal.o
-    0x0800178c   0x0800178c   0x00000050   Code   RO         2335    i.init              liquidcrystal.o
-    0x080017dc   0x080017dc   0x00000058   Code   RO         2110    i.initMicro         main.o
-    0x08001834   0x08001834   0x0000003c   Code   RO         2111    i.main              main.o
-    0x08001870   0x08001870   0x00000028   Code   RO         2341    i.print             liquidcrystal.o
-    0x08001898   0x08001898   0x0000003c   Code   RO         2342    i.pulseEnable       liquidcrystal.o
-    0x080018d4   0x080018d4   0x00000044   Code   RO         2346    i.send              liquidcrystal.o
-    0x08001918   0x08001918   0x00000028   Code   RO         2347    i.setCursor         liquidcrystal.o
-    0x08001940   0x08001940   0x00000014   Code   RO         2348    i.setRowOffsets     liquidcrystal.o
-    0x08001954   0x08001954   0x00000034   Code   RO         2349    i.write4bits        liquidcrystal.o
-    0x08001988   0x08001988   0x00000034   Code   RO         2350    i.write8bits        liquidcrystal.o
-    0x080019bc   0x080019bc   0x00000010   Data   RO         2069    .constdata          system_stm32f4xx.o
-    0x080019cc   0x080019cc   0x00000020   Data   RO         2543    Region$$Table       anon$$obj.o
+    0x08000f00   0x08000f00   0x000001c0   Code   RO         2105    i.MX_GPIO_Init      main.o
+    0x080010c0   0x080010c0   0x00000054   Code   RO         2106    i.MX_TIM3_Init      main.o
+    0x08001114   0x08001114   0x00000054   Code   RO         2107    i.MX_TIM4_Init      main.o
+    0x08001168   0x08001168   0x00000002   Code   RO         2174    i.MemManage_Handler  stm32f4xx_it.o
+    0x0800116a   0x0800116a   0x00000002   Code   RO         2175    i.NMI_Handler       stm32f4xx_it.o
+    0x0800116c   0x0800116c   0x00000020   Code   RO          326    i.NVIC_SetPriority  stm32f4xx_hal_cortex.o
+    0x0800118c   0x0800118c   0x00000002   Code   RO         2176    i.PendSV_Handler    stm32f4xx_it.o
+    0x0800118e   0x0800118e   0x00000002   Code   RO         2177    i.SVC_Handler       stm32f4xx_it.o
+    0x08001190   0x08001190   0x0000000e   Code   RO         2178    i.SysTick_Handler   stm32f4xx_it.o
+    0x0800119e   0x0800119e   0x00000002   PAD
+    0x080011a0   0x080011a0   0x0000008c   Code   RO         2108    i.SystemClock_Config  main.o
+    0x0800122c   0x0800122c   0x00000054   Code   RO         2068    i.SystemInit        system_stm32f4xx.o
+    0x08001280   0x08001280   0x00000014   Code   RO         2179    i.TIM3_IRQHandler   stm32f4xx_it.o
+    0x08001294   0x08001294   0x000000c8   Code   RO         2180    i.TIM4_IRQHandler   stm32f4xx_it.o
+    0x0800135c   0x0800135c   0x00000090   Code   RO         1390    i.TIM_Base_SetConfig  stm32f4xx_hal_tim.o
+    0x080013ec   0x080013ec   0x00000014   Code   RO         1397    i.TIM_ETR_SetConfig  stm32f4xx_hal_tim.o
+    0x08001400   0x08001400   0x00000010   Code   RO         1398    i.TIM_ITRx_SetConfig  stm32f4xx_hal_tim.o
+    0x08001410   0x08001410   0x00000022   Code   RO         1404    i.TIM_TI1_ConfigInputStage  stm32f4xx_hal_tim.o
+    0x08001432   0x08001432   0x00000024   Code   RO         1406    i.TIM_TI2_ConfigInputStage  stm32f4xx_hal_tim.o
+    0x08001456   0x08001456   0x00000002   Code   RO         2181    i.UsageFault_Handler  stm32f4xx_it.o
+    0x08001458   0x08001458   0x0000000e   Code   RO         2545    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x08001466   0x08001466   0x00000002   Code   RO         2546    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08001468   0x08001468   0x0000000e   Code   RO         2547    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x08001476   0x08001476   0x00000002   PAD
+    0x08001478   0x08001478   0x00000138   Code   RO         2327    i.begin             liquidcrystal.o
+    0x080015b0   0x080015b0   0x00000012   Code   RO         2329    i.clear             liquidcrystal.o
+    0x080015c2   0x080015c2   0x00000006   Code   RO         2493    i.command           liquidcrystal.o
+    0x080015c8   0x080015c8   0x00000054   Code   RO         2182    i.dec2BCD           stm32f4xx_it.o
+    0x0800161c   0x0800161c   0x000000c8   Code   RO         2183    i.digit_interupt    stm32f4xx_it.o
+    0x080016e4   0x080016e4   0x00000018   Code   RO         2332    i.display           liquidcrystal.o
+    0x080016fc   0x080016fc   0x00000094   Code   RO         2333    i.enableClock       liquidcrystal.o
+    0x08001790   0x08001790   0x00000050   Code   RO         2335    i.init              liquidcrystal.o
+    0x080017e0   0x080017e0   0x00000058   Code   RO         2110    i.initMicro         main.o
+    0x08001838   0x08001838   0x0000003c   Code   RO         2111    i.main              main.o
+    0x08001874   0x08001874   0x00000028   Code   RO         2341    i.print             liquidcrystal.o
+    0x0800189c   0x0800189c   0x0000003c   Code   RO         2342    i.pulseEnable       liquidcrystal.o
+    0x080018d8   0x080018d8   0x00000044   Code   RO         2346    i.send              liquidcrystal.o
+    0x0800191c   0x0800191c   0x00000028   Code   RO         2347    i.setCursor         liquidcrystal.o
+    0x08001944   0x08001944   0x00000014   Code   RO         2348    i.setRowOffsets     liquidcrystal.o
+    0x08001958   0x08001958   0x00000034   Code   RO         2349    i.write4bits        liquidcrystal.o
+    0x0800198c   0x0800198c   0x00000034   Code   RO         2350    i.write8bits        liquidcrystal.o
+    0x080019c0   0x080019c0   0x00000010   Data   RO         2069    .constdata          system_stm32f4xx.o
+    0x080019d0   0x080019d0   0x00000020   Data   RO         2543    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080019ec, Size: 0x000004b8, Max: 0x00010000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080019f0, Size: 0x000004b8, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x080019ec   0x0000000c   Data   RW          468    .data               stm32f4xx_hal.o
-    0x2000000c   0x080019f8   0x00000004   Data   RW         2071    .data               system_stm32f4xx.o
-    0x20000010   0x080019fc   0x00000008   Data   RW         2184    .data               stm32f4xx_it.o
-    0x20000018   0x08001a04   0x00000014   Data   RW         2352    .data               liquidcrystal.o
+    0x20000000   0x080019f0   0x0000000c   Data   RW          468    .data               stm32f4xx_hal.o
+    0x2000000c   0x080019fc   0x00000004   Data   RW         2071    .data               system_stm32f4xx.o
+    0x20000010   0x08001a00   0x00000008   Data   RW         2184    .data               stm32f4xx_it.o
+    0x20000018   0x08001a08   0x00000014   Data   RW         2352    .data               liquidcrystal.o
     0x2000002c        -       0x00000078   Zero   RW         2112    .bss                main.o
     0x200000a4        -       0x00000010   Zero   RW         2351    .bss                liquidcrystal.o
-    0x200000b4   0x08001a18   0x00000004   PAD
+    0x200000b4   0x08001a1c   0x00000004   PAD
     0x200000b8        -       0x00000400   Zero   RW            1    STACK               startup_stm32f401xc.o
 
 
@@ -1249,7 +1249,7 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        992         94          0         20         16      11063   liquidcrystal.o
-       900        116          0          0        120       4819   main.o
+       904        116          0          0        120       4823   main.o
         36          8        404          0       1024        856   startup_stm32f401xc.o
        180         28          0         12          0       4717   stm32f4xx_hal.o
        228         14          0          0          0      32325   stm32f4xx_hal_cortex.o
@@ -1263,7 +1263,7 @@ Image component sizes
         84         18         16          4          0       1219   system_stm32f4xx.o
 
     ----------------------------------------------------------------------
-      5920        490        452         44       1164     487393   Object Totals
+      5924        490        452         44       1164     487397   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         10          0          0          0          4          0   (incl. Padding)
 
@@ -1306,15 +1306,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      6184        506        452         44       1164     480809   Grand Totals
-      6184        506        452         44       1164     480809   ELF Image Totals
-      6184        506        452         44          0          0   ROM Totals
+      6188        506        452         44       1164     480813   Grand Totals
+      6188        506        452         44       1164     480813   ELF Image Totals
+      6188        506        452         44          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 6636 (   6.48kB)
+    Total RO  Size (Code + RO Data)                 6640 (   6.48kB)
     Total RW  Size (RW Data + ZI Data)              1208 (   1.18kB)
-    Total ROM Size (Code + RO Data + RW Data)       6680 (   6.52kB)
+    Total ROM Size (Code + RO Data + RW Data)       6684 (   6.53kB)
 
 ==============================================================================
 

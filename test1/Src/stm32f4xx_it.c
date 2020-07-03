@@ -44,10 +44,9 @@
 #define MIDTIME 5
 
 // test1\MDK-ARM\test1\test1.hex
-uint32_t counter1 = MAXTIME;
+uint32_t counter1 = MAXTIME; // init
 
-// 0: green, 1: yellow, 2: red
-char light1 = 0, light2 = 2, running = 0;
+char light1 = GREEN, light2 = RED, running = 0;
 void dec2BCD(uint32_t i){
 	uint32_t x1 = i  & 1;
 	uint32_t x2 = i  & 2;
@@ -267,8 +266,8 @@ void EXTI0_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
   /* USER CODE BEGIN EXTI0_IRQn 1 */
 	if (!running) {
-		running = 1;
-		HAL_TIM_Base_Start_IT(&htim3);
+		running = 1; // Start the lights and counters and everything
+		HAL_TIM_Base_Start_IT(&htim3); // Start timers
 		HAL_TIM_Base_Start_IT(&htim4);
 	}
 ////	if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1))
@@ -300,8 +299,8 @@ void EXTI4_IRQHandler(void)
 /**
 * @brief This function handles EXTI line[9:5] interrupts.
 */
-void EXTI9_5_IRQHandler(void)
-{
+void EXTI9_5_IRQHandler(void) // do sth about it
+{ 
   /* USER CODE BEGIN EXTI9_5_IRQn 0 */
 
   /* USER CODE END EXTI9_5_IRQn 0 */
@@ -318,7 +317,7 @@ void EXTI9_5_IRQHandler(void)
 /**
 * @brief This function handles TIM3 global interrupt.
 */
-void TIM3_IRQHandler(void)
+void TIM3_IRQHandler(void) // For refreshing 7Seg
 {
   /* USER CODE BEGIN TIM3_IRQn 0 */
 
@@ -335,7 +334,7 @@ void TIM3_IRQHandler(void)
 /**
 * @brief This function handles TIM4 global interrupt.
 */
-void TIM4_IRQHandler(void)
+void TIM4_IRQHandler(void) // Updating Seconds and lcd
 {
   /* USER CODE BEGIN TIM4_IRQn 0 */
 
@@ -354,14 +353,18 @@ void TIM4_IRQHandler(void)
 		light1 = (light1 + 1) % 3;
 		light2 = (light2 + 1) % 3;
 	} else stateChanged = 0;
+	
+	// refresh if changes happened 
+	// It is just for printing the last part of LCD
 	if (stateChanged == 1){
+		
 		setCursor(23,0);
 		switch(light1){
 			case GREEN:	 print("GREEN ");	 break;
 			case YELLOW: print("YELLOW");	 break;
 			case RED:		 print("RED   ");	 break;
 		}
-		
+
 		setCursor(25,1);
 		switch(light2){
 			case GREEN: 	print("GREEN ");	 break;
