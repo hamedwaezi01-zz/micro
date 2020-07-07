@@ -382,7 +382,7 @@
      <ITEM name="TopLineAddress">40026000</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="16" x="808" flags="0000000a" y="696" h="32" pid="1400" iid="1">
+   <POPUP w="16" x="808" flags="0000000a" y="696" h="18" pid="1400" iid="1">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>
@@ -433,7 +433,7 @@
      <ITEM name="nBreakpoints">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="300" x="179" flags="0000000b" y="388" h="300" pid="101" iid="1">
+   <POPUP w="300" x="160" flags="0000800b" y="337" h="300" pid="101" iid="1">
     <PROPERTIES>
      <ITEM name="Address Column Width">94</ITEM>
      <ITEM name="AutoResize">No</ITEM>
@@ -453,7 +453,7 @@
    <POPUP w="226" x="928" flags="00000008" y="715" h="182" pid="103" iid="1">
     <PROPERTIES/>
    </POPUP>
-   <POPUP w="320" x="271" flags="0000800b" y="468" h="240" pid="105" iid="1">
+   <POPUP w="320" x="505" flags="0000000b" y="417" h="240" pid="105" iid="1">
     <PROPERTIES/>
    </POPUP>
    <POPUP w="170" x="968" flags="00000008" y="710" h="237" pid="3701" iid="1">

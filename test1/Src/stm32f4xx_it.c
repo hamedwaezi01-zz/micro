@@ -46,13 +46,12 @@
 // test1\MDK-ARM\test1\test1.hex
 uint32_t counter1 = MAXTIME; // init
 
-char light1 = GREEN, light2 = RED, running = 0;
+char light1 = GREEN, light2 = RED, running = 0, stateChanged = 1;
 void dec2BCD(uint32_t i){
 	uint32_t x1 = i  & 1;
 	uint32_t x2 = i  & 2;
 	uint32_t x3 = i  & 4;
 	uint32_t x4 = i  & 8;
-	
 	
 	if (x1 > 0) x1 = 1;
 	if (x2 > 0) x2 = 1;
@@ -68,7 +67,7 @@ void dec2BCD(uint32_t i){
 
 void digit_interupt(void){
 	
-	uint32_t delay = 3;
+	uint32_t delay = 4;
 	uint32_t tmp1 = counter1;
 	uint32_t tmp2 = counter1;
 	if (light1 == GREEN) tmp1 = counter1 - MIDTIME;
@@ -86,7 +85,7 @@ void digit_interupt(void){
 	HAL_Delay(delay);
 
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3 | GPIO_PIN_2 | GPIO_PIN_1 | GPIO_PIN_0 , 0);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3 | GPIO_PIN_1 | GPIO_PIN_0 , 1);		
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3 | GPIO_PIN_1 | GPIO_PIN_0 , 1);
 	dec2BCD( tmp2 % 10);
 	tmp2 /= 10;
 	HAL_Delay(delay);
@@ -96,6 +95,26 @@ void digit_interupt(void){
 
 	dec2BCD( tmp2 % 10);
 
+}
+
+void updateLight1(){
+	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 , 0);
+	setCursor(23,0);
+	switch(light1){
+		case GREEN:	 print("GREEN ");	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_5 , 1);	break;
+		case YELLOW: print("YELLOW");	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_4 , 1);	break;
+		case RED:		 print("RED   ");	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_3 , 1);	break;
+	}
+}
+
+void updateLight2(){
+	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2 | GPIO_PIN_1 | GPIO_PIN_0 , 0);
+	setCursor(25,1);
+	switch(light2){
+		case GREEN: 	print("GREEN ");	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2 , 1);	break;
+		case YELLOW:	print("YELLOW");	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_1 , 1);	break;
+		case RED:			print("RED   ");	 HAL_GPIO_WritePin(GPIOE, GPIO_PIN_0 , 1);	break;
+	}
 }
 
 
@@ -261,24 +280,16 @@ void SysTick_Handler(void)
 void EXTI0_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI0_IRQn 0 */
-
+	
   /* USER CODE END EXTI0_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
   /* USER CODE BEGIN EXTI0_IRQn 1 */
-	if (!running) {
+	if (0==running) {
 		running = 1; // Start the lights and counters and everything
 		HAL_TIM_Base_Start_IT(&htim3); // Start timers
 		HAL_TIM_Base_Start_IT(&htim4);
+		stateChanged = 1;
 	}
-////	if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_1))
-////		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1,0);
-////	else{
-////		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1,1);
-////		while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0)){
-////			if(!HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_0))
-////				HAL_GPIO_WritePin(GPIOC,GPIO_PIN_1, 0);
-////		}
-////	}
   /* USER CODE END EXTI0_IRQn 1 */
 }
 
@@ -292,17 +303,59 @@ void EXTI4_IRQHandler(void)
   /* USER CODE END EXTI4_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
   /* USER CODE BEGIN EXTI4_IRQn 1 */
-
+	
+	// EXTI4: RESET LIGHT 1 TO RED
+	light1 = RED;
+	light2 = GREEN;
+	counter1 = MAXTIME;
+	stateChanged = 1;
+	//updateLight1();
+	//updateLight2();
+	
   /* USER CODE END EXTI4_IRQn 1 */
 }
 
 /**
 * @brief This function handles EXTI line[9:5] interrupts.
 */
-void EXTI9_5_IRQHandler(void) // do sth about it
-{ 
+void EXTI9_5_IRQHandler(void)
+{
   /* USER CODE BEGIN EXTI9_5_IRQn 0 */
-
+	uint32_t pending = EXTI->PR;
+	if (pending & (1 << 5) ){
+		EXTI->PR = (1 << 5);
+		light1 = YELLOW;
+		light2 = RED;
+		counter1 = MIDTIME;
+	}
+	if (pending & (1 << 6) ){
+		EXTI->PR = (1 << 6);
+		light1 = GREEN;
+		light2 = RED;
+		counter1 = MAXTIME;
+	}
+	if (pending & (1 << 7) ){
+		EXTI->PR = (1 << 7);
+		light1 = RED;
+		light2 = GREEN;
+		counter1 = MAXTIME;
+		
+	}
+	if (pending & (1 << 8) ){
+		EXTI->PR = (1 << 8);
+		light1 = RED;
+		light2 = YELLOW;
+		counter1 = MIDTIME;
+		
+	}
+	if (pending & (1 << 9) ){
+		EXTI->PR = (1 << 9);
+		light1 = GREEN;
+		light2 = RED;
+		counter1 = MAXTIME;
+		
+	}
+	
   /* USER CODE END EXTI9_5_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
@@ -310,14 +363,17 @@ void EXTI9_5_IRQHandler(void) // do sth about it
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_8);
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_9);
   /* USER CODE BEGIN EXTI9_5_IRQn 1 */
-
+	
+	
+	stateChanged = 1;
+	
   /* USER CODE END EXTI9_5_IRQn 1 */
 }
 
 /**
 * @brief This function handles TIM3 global interrupt.
 */
-void TIM3_IRQHandler(void) // For refreshing 7Seg
+void TIM3_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM3_IRQn 0 */
 
@@ -327,14 +383,18 @@ void TIM3_IRQHandler(void) // For refreshing 7Seg
 	//counter = (counter + 1) % 2000;
 	// counter = (counter + 1) % 2000;
 	digit_interupt();
-	
+	if (stateChanged == 1){
+		stateChanged = 0;
+		updateLight1();
+		updateLight2();
+	}
   /* USER CODE END TIM3_IRQn 1 */
 }
 
 /**
 * @brief This function handles TIM4 global interrupt.
 */
-void TIM4_IRQHandler(void) // Updating Seconds and lcd
+void TIM4_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM4_IRQn 0 */
 
@@ -342,36 +402,23 @@ void TIM4_IRQHandler(void) // Updating Seconds and lcd
   HAL_TIM_IRQHandler(&htim4);
   /* USER CODE BEGIN TIM4_IRQn 1 */
 	//counter1 = (counter1 + 1) % MAXTIME;
-	char stateChanged = 1;
+	
 	counter1--;
 	if (counter1 == 0) counter1 = MAXTIME;
 	
 	if(counter1 == MIDTIME){
 		if (light1 == GREEN) light1 = YELLOW;
 		else if (light2 == GREEN) light2 = YELLOW;
+		stateChanged = 1;
 	} else if (counter1 == MAXTIME){
 		light1 = (light1 + 1) % 3;
 		light2 = (light2 + 1) % 3;
+		stateChanged = 1;
 	} else stateChanged = 0;
 	
 	// refresh if changes happened 
 	// It is just for printing the last part of LCD
-	if (stateChanged == 1){
-		
-		setCursor(23,0);
-		switch(light1){
-			case GREEN:	 print("GREEN ");	 break;
-			case YELLOW: print("YELLOW");	 break;
-			case RED:		 print("RED   ");	 break;
-		}
-
-		setCursor(25,1);
-		switch(light2){
-			case GREEN: 	print("GREEN ");	 break;
-			case YELLOW:	print("YELLOW");	 break;
-			case RED:			print("RED   ");	 break;
-		}
-	}
+	
 	
 	//digit_interupt();
 	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_1);
