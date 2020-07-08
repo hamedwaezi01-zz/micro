@@ -123,6 +123,7 @@ void updateLight2(){
 /* External variables --------------------------------------------------------*/
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim4;
+extern UART_HandleTypeDef huart2;
 
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
@@ -423,6 +424,56 @@ void TIM4_IRQHandler(void)
 	//digit_interupt();
 	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_1);
   /* USER CODE END TIM4_IRQn 1 */
+}
+
+/**
+* @brief This function handles USART2 global interrupt.
+*/
+void USART2_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART2_IRQn 0 */
+
+  /* USER CODE END USART2_IRQn 0 */
+  HAL_UART_IRQHandler(&huart2);
+  /* USER CODE BEGIN USART2_IRQn 1 */
+	extern unsigned char data[1];
+	
+	switch(data[0]){
+		case 'r':
+			light1 = RED;
+			light2 = GREEN;
+			counter1 = MAXTIME;
+			break;
+		case 'g':
+			light1 = GREEN;
+			light2 = RED;
+			counter1 = MAXTIME;
+			break;
+		case 'y':
+			light1 = YELLOW;
+			light2 = RED;
+			counter1 = MIDTIME;
+			break;
+		case '1':
+			light1 = GREEN;
+			light2 = RED;
+			counter1 = MAXTIME;
+			break;
+		case '2':
+			light1 = RED;
+			light2 = GREEN;
+			counter1 = MAXTIME;
+			break;
+		case '3':
+			light1 = RED;
+			light2 = YELLOW;
+			counter1 = MIDTIME;
+			break;
+			
+	}
+	
+	HAL_UART_Receive_IT(&huart2,data,sizeof(data));
+  /* USER CODE END USART2_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

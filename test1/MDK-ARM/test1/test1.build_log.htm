@@ -5,11 +5,11 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.24.2.0
 Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Hamed Waezi, hamedwaezi01, LIC=ZB4HL-0DEER-TGN7T-R6QN7-1BVK5-3FETD
+License Information: seyyedhasan ayubi, o, LIC=----
  
 Tool Versions:
-Toolchain:       MDK-ARM Plus  Version: 5.24.1
-Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+Toolchain:       MDK-Lite  Version: 5.24.1
+Toolchain Path:  G:\Software\keil\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 5 (build 528)
 Assembler:       Armasm.exe V5.06 update 5 (build 528)
 Linker/Locator:  ArmLink.exe V5.06 update 5 (build 528)
@@ -21,12 +21,31 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
 Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
-G:\Programming\microprocessors\projects\code\micro\test1\MDK-ARM\test1.uvprojx
-Project File Date:  07/07/2020
+H:\Uni\Micro\project\micro\test1\MDK-ARM\test1.uvprojx
+Project File Date:  07/08/2020
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
-Build target 'test1'
+*** Using Compiler 'V5.06 update 5 (build 528)', folder: 'G:\Software\keil\ARM\ARMCC\Bin'
+Rebuild target 'test1'
+assembling startup_stm32f401xc.s...
+compiling stm32f4xx_hal.c...
+compiling stm32f4xx_hal_cortex.c...
+compiling stm32f4xx_hal_flash_ex.c...
+compiling stm32f4xx_hal_flash.c...
+compiling stm32f4xx_hal_pwr.c...
+compiling stm32f4xx_hal_rcc.c...
+compiling stm32f4xx_hal_gpio.c...
+compiling stm32f4xx_hal_flash_ramfunc.c...
+compiling stm32f4xx_hal_rcc_ex.c...
+compiling stm32f4xx_hal_tim_ex.c...
+compiling stm32f4xx_hal_dma_ex.c...
+compiling stm32f4xx_hal_dma.c...
+compiling stm32f4xx_hal_pwr_ex.c...
+compiling stm32f4xx_hal_tim.c...
+compiling stm32f4xx_hal_msp.c...
+compiling system_stm32f4xx.c...
+compiling main.c...
+compiling LiquidCrystal.c...
 compiling stm32f4xx_it.c...
 ../Src/stm32f4xx_it.c(61): warning:  #188-D: enumerated type mixed with another type
   	HAL_GPIO_WritePin(
@@ -140,9 +159,13 @@ PIOE,
 PIO_PIN_0 , 1);	break;
 ../Src/stm32f4xx_it.c: 20 warnings, 0 errors
 linking...
-Program Size: Code=6536 RO-data=452 RW-data=44 ZI-data=1164  
-FromELF: creating hex file...
-"test1\test1.axf" - 0 Error(s), 20 Warning(s).
+test1\test1.axf: Error: L6218E: Undefined symbol HAL_UART_Init (referred from main.o).
+test1\test1.axf: Error: L6218E: Undefined symbol HAL_UART_Receive_IT (referred from main.o).
+test1\test1.axf: Error: L6218E: Undefined symbol HAL_UART_IRQHandler (referred from stm32f4xx_it.o).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 3 error messages.
+"test1\test1.axf" - 3 Error(s), 20 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -159,13 +182,14 @@ Package Vendor: Keil
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_test1
-  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include
-  C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+  G:\Software\keil\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include
+  G:\Software\keil\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:02
+Target not created.
+Build Time Elapsed:  00:00:12
 </pre>
 </body>
 </html>
