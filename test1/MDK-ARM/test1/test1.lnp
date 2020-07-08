@@ -14,6 +14,7 @@
 "test1\stm32f4xx_hal_tim.o"
 "test1\stm32f4xx_hal_rcc_ex.o"
 "test1\stm32f4xx_hal_pwr_ex.o"
+"test1\stm32f4xx_hal_uart.o"
 "test1\system_stm32f4xx.o"
 "test1\main.o"
 "test1\stm32f4xx_it.o"

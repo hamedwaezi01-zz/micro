@@ -471,6 +471,7 @@ void USART2_IRQHandler(void)
 			break;
 			
 	}
+	stateChanged = 1;
 	
 	HAL_UART_Receive_IT(&huart2,data,sizeof(data));
   /* USER CODE END USART2_IRQn 1 */
